@@ -302,6 +302,7 @@ int main() {
 
     int opcao;
 
+    
     imprimirMenu();
 
     while (1) {

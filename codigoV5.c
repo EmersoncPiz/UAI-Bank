@@ -21,8 +21,6 @@ void limparBuffer() {
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-// Lê uma linha inteira e usa sscanf — elimina todos os problemas de buffer residual
-// Retorna 1 se leu com sucesso, 0 caso contrário
 int lerDadosUsuario(char* nome, int* idade, double* saldo) {
     char linha[256];
 
@@ -101,7 +99,6 @@ void opcao1(Banco* banco) {
     int idade;
     double saldo;
 
-    // Consome o resto da linha (incluindo '\n') que ficou após ler a opção do menu
     limparBuffer();
 
     if (!lerDadosUsuario(nome, &idade, &saldo)) {
@@ -144,10 +141,7 @@ void opcao2(Banco* banco) {
         return;
     }
 
-    // Aumentamos a memória de uma só vez para os N usuários
     aumentarMemoriaVarios(banco, n);
-
-    // Consome o '\n' que ficou no buffer após ler n
     limparBuffer();
 
     for (int i = 0; i < n; i++) {
@@ -220,7 +214,6 @@ void opcao4(Banco* banco) {
         limparBuffer();
         return;
     }
-    // Descarta qualquer resto na linha
     limparBuffer();
 
     if (idOrigem == idDestino) {
@@ -255,7 +248,6 @@ void opcao5(Banco* banco) {
         limparBuffer();
         return;
     }
-    // Descarta qualquer resto na linha
     limparBuffer();
 
     int indice = buscaBinaria(banco, idRemover);
